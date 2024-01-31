@@ -13,5 +13,9 @@ namespace MagicVilla_VillaAPI.Data
         {
             return villaList.OrderByDescending(v => v.Id).FirstOrDefault().Id + 1;
         }
+        public static bool NameIsUnique(string name)
+        {
+            return villaList.Find(v => (v.Name ?? "").ToUpper() == name.ToUpper()) != null;
+        }
     }
 }
