@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MagicVilla_VillaAPI.Models.Dto;
 using MagicVilla_VillaAPI.Data;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace MagicVilla_VillaAPI.Controllers
 {
@@ -95,6 +96,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [HttpPut("{id:int}", Name = "UpdateVilla")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult UpdateVilla(int id, [FromBody]VillaDTO villaDTO)
         {
             if(!ValidateIntInput(id) || !ValidateCreatedObject(villaDTO))
@@ -115,10 +117,38 @@ namespace MagicVilla_VillaAPI.Controllers
             }
 
             VillaDTO villaToUpdate = VillaMockData.GetVillaToUpdate(id);
+            if(villaToUpdate == null)
+            {
+                return NotFound();
+            }
             villaToUpdate.Name = villaDTO.Name;
             villaToUpdate.SqFt = villaDTO.SqFt;
             villaToUpdate.Occupancy = villaDTO.Occupancy;
-            
+
+            return NoContent();
+        }
+
+        [HttpPatch("{id:int}", Name = "UpdatePartialVilla")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult UpdatePartialVilla(int id, JsonPatchDocument<VillaDTO> patchDTO)
+        {
+            if(!ValidateIntInput(id) || !ValidateCreatedObject(patchDTO))
+            {
+                return BadRequest();
+            }
+
+            VillaDTO villaToUpdate = VillaMockData.GetVillaToUpdate(id);
+            if(villaToUpdate == null)
+            {
+                return NotFound();
+            }
+            patchDTO.ApplyTo(villaToUpdate, ModelState);
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             return NoContent();
         }
 

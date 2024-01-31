@@ -1,12 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "ZmJjM6hv4VOtzIct+XWkP01uOYQRHmO9OfPus61ttNxLaiUF3NOwCvm0QJyk9lp6sUFvJ7zf2GK6g1C46WeVeg==",
+  "dgSpecHash": "2v/2YRMkHt72sD+RbyPmQ3SXEfh2NRA1NQ8aeHbrVcZKtA0hEZCp/AkszHyZsIlRM7a8rLXPtFVCP4wUxqFYuQ==",
   "success": true,
   "projectFilePath": "/Users/andrewgerber/Personal/AG_Repo/ApiTutorial/MagicVilla_VillaAPI/MagicVilla_VillaAPI.csproj",
   "expectedPackageFiles": [
+    "/Users/andrewgerber/.nuget/packages/microsoft.aspnetcore.jsonpatch/8.0.1/microsoft.aspnetcore.jsonpatch.8.0.1.nupkg.sha512",
+    "/Users/andrewgerber/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/7.0.0/microsoft.aspnetcore.mvc.newtonsoftjson.7.0.0.nupkg.sha512",
     "/Users/andrewgerber/.nuget/packages/microsoft.aspnetcore.openapi/7.0.15/microsoft.aspnetcore.openapi.7.0.15.nupkg.sha512",
+    "/Users/andrewgerber/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/andrewgerber/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/Users/andrewgerber/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
+    "/Users/andrewgerber/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
+    "/Users/andrewgerber/.nuget/packages/newtonsoft.json.bson/1.0.2/newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "/Users/andrewgerber/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "/Users/andrewgerber/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "/Users/andrewgerber/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
