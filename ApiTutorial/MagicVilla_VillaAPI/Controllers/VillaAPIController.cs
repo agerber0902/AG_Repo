@@ -10,16 +10,42 @@ namespace MagicVilla_VillaAPI.Controllers
     {
 
         [HttpGet]
-        public IEnumerable<VillaDTO> GetVillas()
+        public ActionResult<IEnumerable<VillaDTO>> GetVillas()
         {
-            return VillaMockData.villaList;
+            return Ok(VillaMockData.villaList);
         }
 
         //This makes id required and forces it to an int
         [HttpGet("{id:int}")]
-        public VillaDTO? GetVilla(int id)
+        public ActionResult<VillaDTO> GetVilla(int id)
         {
-            return VillaMockData.villaList.FirstOrDefault(v => v.Id == id);
+            if(!ValidateIntInput(id))
+            {
+                return BadRequest();
+            }
+
+            VillaDTO? villa = VillaMockData.villaList.FirstOrDefault(v => v.Id == id);
+
+            if(!ValidateCreatedObject(villa))
+            {
+                return NotFound();
+            }
+
+            return Ok(villa);
+        }
+
+        private bool ValidateIntInput(int? i)
+        {
+            // if(i == null || i == 0)
+            // {
+            //     return false;
+            // }
+
+            return i != null && i != 0;
+        }
+        private bool ValidateCreatedObject<T>(T obj)
+        {
+            return (obj != null);
         }
 
     }
