@@ -15,6 +15,13 @@ namespace MagicVilla_VillaAPI.Controllers
             return VillaMockData.villaList;
         }
 
+        //This makes id required and forces it to an int
+        [HttpGet("{id:int}")]
+        public VillaDTO? GetVilla(int id)
+        {
+            return VillaMockData.villaList.FirstOrDefault(v => v.Id == id);
+        }
+
     }
 
 }
