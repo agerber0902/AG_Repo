@@ -6,10 +6,10 @@ namespace MagicVilla_VillaAPI.Controllers
 {
     [Route("api/VillaAPI")]
     [ApiController]
-    public class VillaAPICoontroller : ControllerBase
+    public class VillaAPIController : ControllerBase
     {
 
-        [HttpGet]
+        [HttpGet(Name = "GetVillas")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(VillaDTO))]
         public ActionResult<IEnumerable<VillaDTO>> GetVillas()
         {
@@ -17,7 +17,7 @@ namespace MagicVilla_VillaAPI.Controllers
         }
 
         //This makes id required and forces it to an int
-        [HttpGet("{id:int}")]
+        [HttpGet("{id:int}", Name = "GetVilla")]
         //Add api documentation
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(VillaDTO))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -39,8 +39,8 @@ namespace MagicVilla_VillaAPI.Controllers
             return Ok(villa);
         }
 
-        [HttpPost]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(VillaDTO))]
+        [HttpPost(Name = "CreateVilla")]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(VillaDTO))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<VillaDTO> CreateVilla([FromBody]VillaDTO villaDTO)
@@ -58,7 +58,7 @@ namespace MagicVilla_VillaAPI.Controllers
             villaDTO.Id = VillaMockData.MockDataPrimaryKey();
 
             VillaMockData.villaList.Add(villaDTO);
-            return Ok(villaDTO);
+            return CreatedAtRoute("GetVilla", new {id = villaDTO.Id}, villaDTO);
         }
 
         private bool ValidateIntInput(int? i)
