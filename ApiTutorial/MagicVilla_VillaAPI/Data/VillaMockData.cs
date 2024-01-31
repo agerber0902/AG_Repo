@@ -17,5 +17,9 @@ namespace MagicVilla_VillaAPI.Data
         {
             return villaList.Find(v => (v.Name ?? "").ToUpper() == name.ToUpper()) != null;
         }
+        public static VillaDTO GetVillaDTOToDelete(int id)
+        {
+            return villaList.FirstOrDefault(v => v.Id == id);
+        }
     }
 }

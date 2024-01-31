@@ -4,7 +4,7 @@ using MagicVilla_VillaAPI.Data;
 
 namespace MagicVilla_VillaAPI.Controllers
 {
-    [Route("api/VillaAPI")]
+    [Route("api/Villa")]
     [ApiController]
     public class VillaAPIController : ControllerBase
     {
@@ -69,6 +69,27 @@ namespace MagicVilla_VillaAPI.Controllers
 
             VillaMockData.villaList.Add(villaDTO);
             return CreatedAtRoute("GetVilla", new {id = villaDTO.Id}, villaDTO);
+        }
+
+        [HttpDelete("{id:int}", Name = "DeleteVilla")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult DeleteVilla(int id)
+        {
+            if(id == 0)
+            {
+                return BadRequest();
+            }
+            VillaDTO villaToDelete = VillaMockData.GetVillaDTOToDelete(id);
+        
+            if(villaToDelete == null)
+            {
+                return NotFound();
+            }
+
+            VillaMockData.villaList.Remove(villaToDelete);
+            return NoContent();
         }
 
         private bool ValidateIntInput(int? i)
