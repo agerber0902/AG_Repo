@@ -8,5 +8,10 @@ namespace MagicVilla_VillaAPI.Data
                 new VillaDTO{Id = 1, Name = "Pool View"},
                 new VillaDTO{Id = 2, Name = "Beach View"}
             };
+
+        public static int MockDataPrimaryKey()
+        {
+            return villaList.OrderByDescending(v => v.Id).FirstOrDefault().Id + 1;
+        }
     }
 }
