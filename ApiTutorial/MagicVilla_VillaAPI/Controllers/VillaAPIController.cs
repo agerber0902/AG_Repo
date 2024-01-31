@@ -10,6 +10,7 @@ namespace MagicVilla_VillaAPI.Controllers
     {
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(VillaDTO))]
         public ActionResult<IEnumerable<VillaDTO>> GetVillas()
         {
             return Ok(VillaMockData.villaList);
@@ -17,6 +18,10 @@ namespace MagicVilla_VillaAPI.Controllers
 
         //This makes id required and forces it to an int
         [HttpGet("{id:int}")]
+        //Add api documentation
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(VillaDTO))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<VillaDTO> GetVilla(int id)
         {
             if(!ValidateIntInput(id))
