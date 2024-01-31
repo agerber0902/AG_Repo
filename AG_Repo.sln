@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiTutorial", "ApiTutorial", "{7F1AA076-1590-4B08-9517-549B004447ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicVilla_VillaAPI", "ApiTutorial\MagicVilla_VillaAPI\MagicVilla_VillaAPI.csproj", "{136D7F8B-D36E-4F46-A2A3-05B89D8A0B3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{136D7F8B-D36E-4F46-A2A3-05B89D8A0B3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{136D7F8B-D36E-4F46-A2A3-05B89D8A0B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{136D7F8B-D36E-4F46-A2A3-05B89D8A0B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{136D7F8B-D36E-4F46-A2A3-05B89D8A0B3A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{136D7F8B-D36E-4F46-A2A3-05B89D8A0B3A} = {7F1AA076-1590-4B08-9517-549B004447ED}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {43B202C9-5A7F-47BC-AC25-4E00BD1779EE}
+	EndGlobalSection
+EndGlobal
