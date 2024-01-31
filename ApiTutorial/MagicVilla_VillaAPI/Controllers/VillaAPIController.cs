@@ -92,6 +92,36 @@ namespace MagicVilla_VillaAPI.Controllers
             return NoContent();
         }
 
+        [HttpPut("{id:int}", Name = "UpdateVilla")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult UpdateVilla(int id, [FromBody]VillaDTO villaDTO)
+        {
+            if(!ValidateIntInput(id) || !ValidateCreatedObject(villaDTO))
+            {
+                return BadRequest();
+            }
+
+            if(villaDTO.Id != id)
+            {
+                ModelState.AddModelError("IdDoesNotMatch", "Villa to delete id and id input do not match.");
+                return BadRequest(ModelState);
+            }
+
+            if(VillaMockData.NameForUpdateIsValid(villaDTO.Name ?? "", id))
+            {
+                ModelState.AddModelError("NameIsNotUnique", "Villa already exists!");
+                return BadRequest(ModelState);
+            }
+
+            VillaDTO villaToUpdate = VillaMockData.GetVillaToUpdate(id);
+            villaToUpdate.Name = villaDTO.Name;
+            villaToUpdate.SqFt = villaDTO.SqFt;
+            villaToUpdate.Occupancy = villaDTO.Occupancy;
+            
+            return NoContent();
+        }
+
         private bool ValidateIntInput(int? i)
         {
             // if(i == null || i == 0)
